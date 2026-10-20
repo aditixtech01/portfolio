@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aditi Sharma, full-stack developer in Bengaluru. Projects, internships, skills and awards.">
+<title>Aditi Sharma</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky identity column on the left, work and experience scroll on the right; stacks to one column on phones. */
+:root {
+  --bg: #F2F4F3;
+  --surface: #E7ECEA;
+  --fg: #14201C;
+  --muted: #55645E;
+  --line: #CBD3CF;
+  --accent: #0B6B58;
+  --accent-fg: #FFFFFF;
+  --accent-soft: #D3EBE3;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1513;
+    --surface: #17211D;
+    --fg: #E6EEEA;
+    --muted: #93A39C;
+    --line: #26332E;
+    --accent: #5FD3B6;
+    --accent-fg: #06201A;
+    --accent-soft: #17332B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1513;
+  --surface: #17211D;
+  --fg: #E6EEEA;
+  --muted: #93A39C;
+  --line: #26332E;
+  --accent: #5FD3B6;
+  --accent-fg: #06201A;
+  --accent-soft: #17332B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 72px;
+}
+
+/* Identity column */
+.side {
+  position: sticky;
+  top: 48px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.role { margin: 12px 0 0; color: var(--muted); font-size: 1.02rem; }
+.nav { display: flex; flex-direction: column; gap: 2px; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.nav a { text-decoration: none; padding: 6px 0; color: var(--muted); border-bottom: 1px solid transparent; width: fit-content; }
+.nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.contact { display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem; }
+.mail { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mail code { font-family: var(--font-mono); font-size: 0.82rem; overflow-wrap: anywhere; user-select: all; }
+.btn {
+  font: inherit; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+  background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 4px; padding: 4px 9px; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.ext { text-decoration: none; border-bottom: 1px solid var(--line); width: fit-content; }
+.ext:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.streak { display: flex; flex-direction: column; gap: 10px; }
+.streak-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.streak-label b { color: var(--accent); font-weight: 500; }
+.cells { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; max-width: 240px; }
+.cells i { aspect-ratio: 1; background: var(--accent); border-radius: 1.5px; opacity: 0.88; }
+.cells i:nth-child(7n+3) { opacity: 0.62; }
+.cells i:nth-child(11n+5) { opacity: 0.4; }
+
+/* Main column */
+main { min-width: 0; display: flex; flex-direction: column; gap: 72px; }
+.lede {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 28ch;
+  text-wrap: balance;
+}
+.lede em { font-style: normal; color: var(--accent); }
+.lede-sub { margin: 20px 0 0; color: var(--muted); max-width: 58ch; }
+
+h2 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+section { scroll-margin-top: 32px; }
+
+/* Projects: the one loud part of the page */
+.projects { display: flex; flex-direction: column; }
+.project { padding-block: 28px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+.project:first-child { border-top: 0; padding-top: 0; }
+.project-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; }
+.project h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.badge {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase;
+  background: var(--accent); color: var(--accent-fg); padding: 3px 9px; border-radius: 3px; white-space: nowrap;
+}
+.project p { margin: 0; max-width: 60ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.tags li { font-family: var(--font-mono); font-size: 0.74rem; background: var(--surface); padding: 3px 9px; border-radius: 3px; }
+.live { font-weight: 600; text-decoration: none; color: var(--accent); width: fit-content; border-bottom: 1.5px solid currentColor; }
+.live:hover { opacity: 0.8; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.live.alt { color: var(--fg); border-bottom-color: var(--line); font-weight: 500; }
+.live.alt:hover { color: var(--accent); border-bottom-color: var(--accent); opacity: 1; }
+.note { font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); }
+
+/* Experience */
+.jobs { display: flex; flex-direction: column; }
+.job { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 28px; padding-block: 20px; border-top: 1px solid var(--line); }
+.job:first-child { border-top: 0; padding-top: 0; }
+.when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); padding-top: 4px; }
+.job h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; margin: 0; }
+.where { color: var(--muted); margin: 2px 0 0; font-size: 0.95rem; }
+.job p { margin: 8px 0 0; max-width: 58ch; }
+
+/* Skills and lists */
+.rows { display: flex; flex-direction: column; margin: 0; }
+.row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 28px; padding-block: 12px; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; padding-top: 0; }
+.row dt { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); padding-top: 3px; }
+.row dd { margin: 0; }
+.plain { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.plain li { padding-left: 18px; position: relative; }
+.plain li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 8px; height: 2px; background: var(--accent); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.edu b { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; }
+.edu span { color: var(--muted); font-size: 0.95rem; }
+
+footer { color: var(--muted); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.03em; }
+
+@media (max-width: 900px) {
+  .page { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: 32px 56px; }
+  .side { position: static; gap: 22px; }
+  .nav { flex-direction: row; flex-wrap: wrap; gap: 4px 18px; }
+  main { gap: 56px; }
+}
+@media (max-width: 560px) {
+  .job, .row { grid-template-columns: minmax(0, 1fr); }
+  .two { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <aside class="side">
+    <div>
+      <h1 class="name">Aditi Sharma</h1>
+      <p class="role">Full-stack developer. Bengaluru, India.</p>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#skills">Skills</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#education">Education</a>
+    </nav>
+
+    <div class="contact">
+      <div class="mail">
+        <code id="email">aditixtech01@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy</button>
+      </div>
+      <a class="ext" href="https://github.com/aditixtech01" target="_blank" rel="noopener">github.com/aditixtech01</a>
+      <a class="ext" href="https://www.linkedin.com/in/aditi-sharma-2013as" target="_blank" rel="noopener">linkedin.com/in/aditi-sharma-2013as</a>
+    </div>
+
+    <div class="streak">
+      <p class="streak-label"><b>200</b> active days on LeetCode</p>
+      <div class="cells" id="cells" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p class="lede">I build web apps from the React screen down to the <em>MySQL</em> table.</p>
+      <p class="lede-sub">Python and JavaScript are my main languages. I finished my B.Tech in Computer Science (AI) in 2026 and have interned on full-stack and machine learning work at Dhee Coding Lab and IBM.</p>
+    </header>
+
+    <section id="work">
+      <h2>Selected work</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="project-head">
+            <h3>MilkMate</h3>
+            <span class="badge">Winner, IBM Technovate 3.0</span>
+          </div>
+          <p>A dairy management system built with React, JavaScript and REST APIs. It won the project presentation round at IBM Technovate 3.0 in 2025.</p>
+          <ul class="tags"><li>React</li><li>JavaScript</li><li>REST APIs</li></ul>
+          <a class="live" href="https://milkmate.onrender.com" target="_blank" rel="noopener">Open live site &rarr;</a>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Rentzyy</h3>
+          </div>
+          <p>A rental property platform with separate dashboards for tenants and owners, plus login authentication. The React frontend talks to a Python backend built on FastAPI, and LocalStorage keeps data across visits.</p>
+          <ul class="tags"><li>React.js</li><li>FastAPI</li><li>Python</li><li>HTML5</li><li>CSS3</li><li>LocalStorage</li></ul>
+          <a class="live" href="https://rentzyy.vercel.app" target="_blank" rel="noopener">Open live site &rarr;</a>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>The Cravings</h3>
+          </div>
+          <p>A food delivery web app built with React and JavaScript.</p>
+          <ul class="tags"><li>React</li><li>JavaScript</li></ul>
+          <div class="links">
+            <a class="live" href="https://carvings.vercel.app/" target="_blank" rel="noopener">Open live site &rarr;</a>
+            <a class="live alt" href="https://github.com/Aditi-Sharma-17/Carvings" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="jobs">
+        <div class="job">
+          <div class="when">Jan &ndash; Jul 2026</div>
+          <div>
+            <h3>Python Full-Stack Developer Intern</h3>
+            <p class="where">Dhee Coding Lab (Prodhee Technologies Pvt. Ltd.), Bengaluru</p>
+            <p>Full-stack work with Python and MySQL on the backend and JavaScript with React.js on the frontend.</p>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">Jan &ndash; Feb 2026</div>
+          <div>
+            <h3>AI &amp; Machine Learning Intern</h3>
+            <p class="where">IBM PBEL, virtual</p>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">Jul &ndash; Aug 2025</div>
+          <div>
+            <h3>Web Development Intern</h3>
+            <p class="where">IBM (PBEL scheme), virtual</p>
+            <p>Built a full-stack e-commerce and food delivery website.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="volunteering">
+      <h2>Volunteering</h2>
+      <div class="jobs">
+        <div class="job">
+          <div class="when">2026</div>
+          <div>
+            <h3>Volunteer</h3>
+            <p class="where">Cypher 2026, India's largest AI summit, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="rows">
+        <div class="row"><dt>Languages</dt><dd>Python, JavaScript (ES6+), SQL, HTML5, CSS3</dd></div>
+        <div class="row"><dt>Frontend</dt><dd>React, Bootstrap</dd></div>
+        <div class="row"><dt>Backend</dt><dd>FastAPI, REST APIs</dd></div>
+        <div class="row"><dt>Database</dt><dd>MySQL</dd></div>
+        <div class="row"><dt>Tools</dt><dd>Git, GitHub, VS Code, Vercel</dd></div>
+      </dl>
+    </section>
+
+    <section id="recognition">
+      <h2>Recognition and certificates</h2>
+      <div class="two">
+        <ul class="plain">
+          <li>Winner, project presentation, IBM Technovate 3.0 (MilkMate)</li>
+          <li>Top 10, IBM Technovate 2.0</li>
+          <li>High rank in an NPTEL exam, earning a 50% exam fee refund</li>
+          <li>Winner, inter-college debate competition</li>
+          <li>Captain of the Kho-Kho team, district champions two years running</li>
+        </ul>
+        <ul class="plain">
+          <li>Python Programming, Codechef</li>
+          <li>MySQL, Codechef</li>
+          <li>Introduction to Python, IBM</li>
+          <li>RDBMS, IBM</li>
+          <li>Web Development, Internshala</li>
+          <li>Soft Skills Development, NPTEL (IIT Kanpur)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="jobs">
+        <div class="job">
+          <div class="when">2022 &ndash; 2026</div>
+          <div class="edu">
+            <b>B.Tech, Computer Science Engineering (AI)</b>
+            <span>Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore, in collaboration with IBM. CGPA 7.4.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>Aditi Sharma, Bengaluru</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var cells = document.getElementById("cells");
+  if (cells) {
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < 200; i++) frag.appendChild(document.createElement("i"));
+    cells.appendChild(frag);
+  }
+  var btn = document.getElementById("copy");
+  var mail = document.getElementById("email");
+  if (btn && mail) {
+    btn.addEventListener("click", function () {
+      var text = mail.textContent;
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var fallback = function () {
+        var r = document.createRange();
+        r.selectNodeContents(mail);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+        btn.textContent = "Select + copy";
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
